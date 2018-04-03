@@ -2,7 +2,7 @@
 
 以下の技術スタックを使ったアプリケーションの構築
 
-Spring Boot / Kotlin / k8s (Google Kubernetes Engine) / Cloud Endpoints / RDB (Cloud SQL) / Firebase / gRPC
+Spring Boot / Kotlin / k8s (Google Kubernetes Engine) / Cloud Endpoints / RDB (Cloud SQL) / CircleCI /Firebase / gRPC
 
 ## IDE
 
@@ -18,14 +18,19 @@ Mac OS X 10.13.3
 
 ## Spring Boot / Kotlin
 
-以下のプロジェクトをそのまま使う
+以下のドキュメントのサンプルドキュメントを使う
 
 https://github.com/JetBrains/kotlin-examples/tree/master/tutorials/spring-boot-restful
 
 ドキュメント
 https://kotlinlang.org/docs/tutorials/spring-boot-restful.html
 
-Gradle, Kotlin, Spring Boot のバージョンがやや古いが、上げると上手くいかないので一旦このまま進める。
+Gradle, Spring Boot のバージョンがやや古いが、上げると上手くいかないので一旦このまま進める。
+
+## k8s (Google Kubernetes Engine)
+
+Run a Kotlin Spring Boot application on Google Kubernetes Engine
+https://cloud.google.com/community/tutorials/kotlin-springboot-container-engine
 
 ## 参考
 
