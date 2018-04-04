@@ -1,4 +1,4 @@
-## ゴール
+## Goal
 
 以下の技術スタックを使ったアプリケーションの構築
 
@@ -40,14 +40,21 @@ https://cloud.google.com/iam/docs/creating-managing-service-account-keys?hl=ja
 TODO: 付与する役割をもっと狭くする。
 
 - Cloud Container Builder
-- Kubernetes Engine Cluster 管理者
+- Kubernetes Engine 管理者
 - ストレージ管理者
 - 閲覧者
 
 Deploying to Google Kubernetes Engine  
 https://circleci.com/docs/2.0/google-container-engine/
 
-## 参考
+CircleCI上で以下の環境変数を設定する
+
+- GCLOUD_SERVICE_KEY
+- GOOGLE_CLUSTER_NAME
+- GOOGLE_COMPUTE_ZONE
+- GOOGLE_PROJECT_ID
+
+## Appendix
 
 - https://github.com/keitaro1020/k8s-example
 - https://kotlinlang.org/docs/tutorials/spring-boot-restful.html
