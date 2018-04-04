@@ -28,13 +28,18 @@ jobs:
             gcloud container builds submit --tag=gcr.io/${GOOGLE_PROJECT_ID}/${IMAGE_NAME}:${IMAGE_VERSION} .
             gcloud container images list
       - run:
-          name: Create pod
+          name: Delete deployment
+          command: |
+            kubectl delete service --ignore-not-found ${DEPLOYMENT_NAME}
+            kubectl delete deployment --ignore-not-found ${DEPLOYMENT_NAME}
+      - run:
+          name: Create deployment
           command: | # gcloud container clusters create demo-cluster --num-nodes=2
             gcloud config set container/cluster ${CLUSTER_NAME}
             kubectl run ${DEPLOYMENT_NAME} --image=gcr.io/${GOOGLE_PROJECT_ID}/${IMAGE_NAME}:${IMAGE_VERSION} --port ${CONTAINER_TARGET_PORT}
             kubectl get pods
       - run:
-          name: Run service
+          name: Expose deployment
           command: |
             kubectl expose deployment ${DEPLOYMENT_NAME} --type=LoadBalancer --port ${CONTAINER_PORT} --target-port ${CONTAINER_TARGET_PORT}
             kubectl get service
