@@ -24,7 +24,7 @@ https://github.com/JetBrains/kotlin-examples/tree/master/tutorials/spring-boot-r
 ドキュメント  
 https://kotlinlang.org/docs/tutorials/spring-boot-restful.html
 
-Gradle, Spring Boot のバージョンがやや古いが、上げると上手くいかないので一旦このまま進める。
+TODO: Gradle, Spring Boot のバージョンがやや古いが、上げると上手くいかないので一旦このまま進める。
 
 ## k8s (Google Kubernetes Engine)
 
@@ -36,9 +36,16 @@ https://cloud.google.com/community/tutorials/kotlin-springboot-container-engine
 サービス アカウント キーの作成と管理  
 https://cloud.google.com/iam/docs/creating-managing-service-account-keys?hl=ja
 
+サービスアカウントに以下の役割を付与。  
+TODO: 付与する役割をもっと狭くする。
+
+- Cloud Container Builder
+- Kubernetes Engine Cluster 管理者
+- ストレージ管理者
+- 閲覧者
+
 Deploying to Google Kubernetes Engine  
 https://circleci.com/docs/2.0/google-container-engine/
-
 
 ## 参考
 

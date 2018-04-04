@@ -26,6 +26,9 @@ jobs:
             gcloud config set container/cluster demo-cluster
             kubectl run demo --image=gcr.io/${GOOGLE_PROJECT_ID}/demo:v1 --port 8080
             kubectl get pods
+      - run:
+          name: Expose service
+          command: |
             kubectl expose deployment demo --type=LoadBalancer --port 80 --target-port 8080
             kubectl get service
 
