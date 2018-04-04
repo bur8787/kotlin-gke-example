@@ -1,36 +1,10 @@
 version: 2
 jobs:
-  build-image:
-    docker:
-      - image: circleci/openjdk:8-jdk
-    steps:
-      - checkout
-      - setup_remote_docker:
-          docker_layer_caching: true
-      - run:
-          name: Build jar
-          command: ./gradlew build
-      - run:
-          name: Build image
-          command: docker build --no-cache -t demo .
-      - run:
-          name: Save image
-          command: docker save demo > demo.tar
-      - persist_to_workspace:
-          root: .
-          paths: demo.tar
   deploy-job:
     docker:
       - image: google/cloud-sdk
     steps:
       - checkout
-      - attach_workspace:
-          at: .
-      - setup_remote_docker:
-          docker_layer_caching: true
-      - run:
-          name: Load image
-          command: docker load < demo.tar
       - run:
           name: Store GCP Service Account
           command: echo $GCLOUD_SERVICE_KEY > ${HOME}/gcloud-service-key.json
@@ -59,7 +33,4 @@ workflows:
   version: 2
   build:
     jobs:
-      - build-image
-      - deploy-job:
-          requires:
-            - build-image
+      - deploy-job
