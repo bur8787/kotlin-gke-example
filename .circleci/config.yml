@@ -36,7 +36,10 @@ jobs:
           name: Create deployment
           command: | # gcloud container clusters create demo-cluster --num-nodes=2
             gcloud config set container/cluster ${CLUSTER_NAME}
-            kubectl run ${DEPLOYMENT_NAME} --image=gcr.io/${GOOGLE_PROJECT_ID}/${IMAGE_NAME}:${IMAGE_VERSION} --port ${CONTAINER_TARGET_PORT}
+            sed -i -e "s/GOOGLE_PROJECT_ID/${GOOGLE_PROJECT_ID}/g" demo.yaml
+            sed -i -e "s/IMAGE_NAME/${IMAGE_NAME}/g" demo.yaml
+            sed -i -e "s/IMAGE_VERSION/${IMAGE_VERSION}/g" demo.yaml
+            kubectl create -f demo.yaml
             kubectl get pods
       - run:
           name: Expose deployment
