@@ -1,8 +1,8 @@
-## ゴール
+## Goal
 
 以下の技術スタックを使ったアプリケーションの構築
 
-Spring Boot / Kotlin / k8s (Google Kubernetes Engine) / Cloud Endpoints / RDB (Cloud SQL) / CircleCI /Firebase / gRPC
+Spring Boot / Kotlin / k8s (Google Kubernetes Engine) / CircleCI / RDB (Cloud SQL) / Cloud Endpoints / Firebase / gRPC
 
 ## IDE
 
@@ -18,21 +18,43 @@ Mac OS X 10.13.3
 
 ## Spring Boot / Kotlin
 
-以下のドキュメントのサンプルドキュメントを使う
-
+以下のサンプルプロジェクトを使う
 https://github.com/JetBrains/kotlin-examples/tree/master/tutorials/spring-boot-restful
 
-ドキュメント
+ドキュメント  
 https://kotlinlang.org/docs/tutorials/spring-boot-restful.html
 
-Gradle, Spring Boot のバージョンがやや古いが、上げると上手くいかないので一旦このまま進める。
+TODO: Gradle, Spring Boot のバージョンがやや古いが、上げると上手くいかないので一旦このまま進める。
 
 ## k8s (Google Kubernetes Engine)
 
-Run a Kotlin Spring Boot application on Google Kubernetes Engine
+Run a Kotlin Spring Boot application on Google Kubernetes Engine  
 https://cloud.google.com/community/tutorials/kotlin-springboot-container-engine
 
-## 参考
+## CircleCI
+
+サービス アカウント キーの作成と管理  
+https://cloud.google.com/iam/docs/creating-managing-service-account-keys?hl=ja
+
+サービスアカウントに以下の役割を付与。  
+TODO: 付与する役割をもっと狭くする。
+
+- Cloud Container Builder
+- Kubernetes Engine 管理者
+- ストレージ管理者
+- 閲覧者
+
+Deploying to Google Kubernetes Engine  
+https://circleci.com/docs/2.0/google-container-engine/
+
+CircleCI上で以下の環境変数を設定する
+
+- GCLOUD_SERVICE_KEY
+- GOOGLE_CLUSTER_NAME
+- GOOGLE_COMPUTE_ZONE
+- GOOGLE_PROJECT_ID
+
+## Appendix
 
 - https://github.com/keitaro1020/k8s-example
 - https://kotlinlang.org/docs/tutorials/spring-boot-restful.html

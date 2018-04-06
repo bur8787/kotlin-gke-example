@@ -1,0 +1,54 @@
+version: 2
+jobs:
+  deploy-job:
+    docker:
+      - image: google/cloud-sdk
+        environment:
+        - IMAGE_NAME: demo
+        - IMAGE_VERSION: v1
+        - CLUSTER_NAME: demo-cluster
+        - DEPLOYMENT_NAME: demo
+        - CONTAINER_TARGET_PORT: 8080
+        - CONTAINER_PORT: 80
+    steps:
+      - checkout
+      - run:
+          name: Store GCP Service Account
+          command: echo $GCLOUD_SERVICE_KEY > ${HOME}/gcloud-service-key.json
+      - run:
+          name: Configurate GCP
+          command: |
+            gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
+            gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
+            gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
+            gcloud --quiet container clusters get-credentials ${GOOGLE_CLUSTER_NAME}
+      - run:
+          name: Submit image
+          command: |
+            gcloud container builds submit --tag=gcr.io/${GOOGLE_PROJECT_ID}/${IMAGE_NAME}:${IMAGE_VERSION} .
+            gcloud container images list
+      - run:
+          name: Delete deployment
+          command: |
+            kubectl delete service --ignore-not-found ${DEPLOYMENT_NAME}
+            kubectl delete deployment --ignore-not-found ${DEPLOYMENT_NAME}
+      - run:
+          name: Create deployment
+          command: | # gcloud container clusters create demo-cluster --num-nodes=2
+            gcloud config set container/cluster ${CLUSTER_NAME}
+            sed -i -e "s/GOOGLE_PROJECT_ID/${GOOGLE_PROJECT_ID}/g" demo.yaml
+            sed -i -e "s/IMAGE_NAME/${IMAGE_NAME}/g" demo.yaml
+            sed -i -e "s/IMAGE_VERSION/${IMAGE_VERSION}/g" demo.yaml
+            kubectl create -f demo.yaml
+            kubectl get pods
+      - run:
+          name: Expose deployment
+          command: |
+            kubectl expose deployment ${DEPLOYMENT_NAME} --type=LoadBalancer --port ${CONTAINER_PORT} --target-port ${CONTAINER_TARGET_PORT}
+            kubectl get service
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - deploy-job
