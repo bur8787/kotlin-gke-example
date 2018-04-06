@@ -26,5 +26,7 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
                 .authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/public/greeting").permitAll()
                 .antMatchers(HttpMethod.GET, "/private/greeting").authenticated()
+
+        http.headers().frameOptions().disable();
     }
 }

@@ -6,15 +6,16 @@ import org.springframework.web.bind.annotation.RestController
 import java.util.concurrent.atomic.AtomicLong
 
 @RestController
-class GreetingController {
+class WorkerController(private val service: WorkerService) {
 
     val counter = AtomicLong()
 
-    @GetMapping("/public/greeting")
-    fun publicGreeting(@RequestParam(value = "name", defaultValue = "World") name: String) =
-            Greeting(counter.incrementAndGet(), "Hello, $name")
+    @GetMapping("/workers")
+    fun publicGreeting(): List<Worker> {
+        return service.getWorkers()
+    }
 
-    @GetMapping("/private/greeting")
+    @GetMapping("/private/workers")
     fun privateGreeting(@RequestParam(value = "name", defaultValue = "World") name: String) =
-            Greeting(counter.incrementAndGet(), "Hello, $name")
+            Worker(counter.incrementAndGet(), "Hello, $name")
 }
