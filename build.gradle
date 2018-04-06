@@ -34,6 +34,8 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.boot:spring-boot-starter-security'
+    compile 'com.auth0:auth0-spring-security-api:1.0.0-rc.3'
     testCompile 'org.springframework.boot:spring-boot-starter-test'
 }
 
