@@ -1,6 +1,6 @@
 ## Goal
 
-以下の技術スタックを使ったアプリケーションの構築
+Building an application using the following technology stack
 
 Spring Boot / Kotlin / k8s (Google Kubernetes Engine) / CircleCI / RDB (Cloud SQL) / Cloud Endpoints / Firebase / gRPC
 
@@ -18,10 +18,10 @@ Mac OS X 10.13.3
 
 ## Spring Boot / Kotlin
 
-以下のサンプルプロジェクトを使う
+Sample project  
 https://github.com/JetBrains/kotlin-examples/tree/master/tutorials/spring-boot-restful
 
-ドキュメント  
+Document  
 https://kotlinlang.org/docs/tutorials/spring-boot-restful.html
 
 ## k8s (Google Kubernetes Engine)
@@ -45,12 +45,17 @@ TODO: 付与する役割をもっと狭くする。
 Deploying to Google Kubernetes Engine  
 https://circleci.com/docs/2.0/google-container-engine/
 
-CircleCI上で以下の環境変数を設定する
+Add the following environment variables in CircleCI
 
 - GCLOUD_SERVICE_KEY
 - GOOGLE_CLUSTER_NAME
 - GOOGLE_COMPUTE_ZONE
 - GOOGLE_PROJECT_ID
+
+## Auth0
+
+Spring Security Java API Authorization  
+https://auth0.com/docs/quickstart/backend/java-spring-security/01-authorization
 
 ## Appendix
 
