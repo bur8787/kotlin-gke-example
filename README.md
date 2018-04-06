@@ -24,8 +24,6 @@ https://github.com/JetBrains/kotlin-examples/tree/master/tutorials/spring-boot-r
 ドキュメント  
 https://kotlinlang.org/docs/tutorials/spring-boot-restful.html
 
-TODO: Gradle, Spring Boot のバージョンがやや古いが、上げると上手くいかないので一旦このまま進める。
-
 ## k8s (Google Kubernetes Engine)
 
 Run a Kotlin Spring Boot application on Google Kubernetes Engine  
