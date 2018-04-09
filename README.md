@@ -18,7 +18,7 @@ Mac OS X 10.13.3
 
 ## Spring Boot / Kotlin
 
-Sample project  
+Use example project  
 https://github.com/JetBrains/kotlin-examples/tree/master/tutorials/spring-boot-restful
 
 Document  
@@ -31,16 +31,16 @@ https://cloud.google.com/community/tutorials/kotlin-springboot-container-engine
 
 ## CircleCI
 
-サービス アカウント キーの作成と管理  
+Creating and Managing Service Account Keys
 https://cloud.google.com/iam/docs/creating-managing-service-account-keys?hl=ja
 
-サービスアカウントに以下の役割を付与。  
-TODO: 付与する役割をもっと狭くする。
+Add the following roles to service account
+TODO: minimize roles
 
 - Cloud Container Builder
-- Kubernetes Engine 管理者
-- ストレージ管理者
-- 閲覧者
+- Kubernetes Engine Admin
+- Storage Admin
+- Viewer
 
 Deploying to Google Kubernetes Engine  
 https://circleci.com/docs/2.0/google-container-engine/
@@ -56,6 +56,14 @@ Add the following environment variables in CircleCI
 
 Spring Security Java API Authorization  
 https://auth0.com/docs/quickstart/backend/java-spring-security/01-authorization
+
+## Exposed
+
+Sample project
+https://github.com/sdeleuze/geospatial-messenger
+
+Blog
+https://spring.io/blog/2016/03/20/a-geospatial-messenger-with-kotlin-spring-boot-and-postgresql
 
 ## Appendix
 
