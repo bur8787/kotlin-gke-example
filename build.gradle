@@ -28,15 +28,21 @@ jar {
 
 repositories {
     jcenter()
+    maven {
+        url  "https://dl.bintray.com/kotlin/exposed"
+    }
+
 }
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+    compile("org.jetbrains.exposed:spring-transaction:0.10.2")
+    compile 'org.jetbrains.exposed:exposed:0.10.2'
     compile 'org.springframework.boot:spring-boot-starter-web'
     compile 'org.springframework.boot:spring-boot-starter-security'
+    compile 'org.springframework.boot:spring-boot-devtools'
     compile 'com.auth0:auth0-spring-security-api:1.0.0-rc.3'
+    runtime 'com.h2database:h2'
     testCompile 'org.springframework.boot:spring-boot-starter-test'
 }
-
-
