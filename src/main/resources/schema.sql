@@ -1,3 +1,5 @@
+drop table if exists workers;
+
 create table workers
 (
    id integer not null auto_increment,
