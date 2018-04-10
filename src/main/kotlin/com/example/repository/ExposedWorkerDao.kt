@@ -7,12 +7,12 @@ import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.select
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.statements.UpdateBuilder
+import org.springframework.context.annotation.Primary
 import org.springframework.stereotype.Repository
 
-interface WorkerRepository : CrudRepository<Worker, Int>
-
+@Primary
 @Repository
-open class DefaultWorkerDao : WorkerRepository {
+open class ExposedWorkerDao : WorkerRepository {
     override fun findAll() = Workers.selectAll().map { fromRow(it) }
 
     override fun findById(id: Int) = Workers.select { Workers.id eq id }.map { fromRow(it) }.get(0)
