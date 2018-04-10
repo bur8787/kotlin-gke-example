@@ -6,11 +6,11 @@ jobs:
     steps:
       - checkout
       - run:
-          name: check
-          command: ./gradlew check -x test
-      - run:
-          name: test
-          command: ./gradlew test
+          name: Test
+          command: |
+            cd frontend
+            ./gradlew check -x test
+            ./gradlew test
   deploy:
     docker:
       - image: google/cloud-sdk
@@ -24,11 +24,9 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Store GCP Service Account
-          command: echo $GCLOUD_SERVICE_KEY > ${HOME}/gcloud-service-key.json
-      - run:
           name: Configurate GCP
           command: |
+            echo $GCLOUD_SERVICE_KEY > ${HOME}/gcloud-service-key.json
             gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
             gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
             gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
@@ -36,6 +34,7 @@ jobs:
       - run:
           name: Submit image
           command: |
+            cd frontend
             gcloud container builds submit --tag=gcr.io/${GOOGLE_PROJECT_ID}/${IMAGE_NAME}:${IMAGE_VERSION} .
             gcloud container images list
       - run:
@@ -46,6 +45,7 @@ jobs:
       - run:
           name: Create deployment
           command: | # gcloud container clusters create demo-cluster --num-nodes=2
+            cd frontend
             gcloud config set container/cluster ${CLUSTER_NAME}
             sed -i -e "s/GOOGLE_PROJECT_ID/${GOOGLE_PROJECT_ID}/g" demo.yaml
             sed -i -e "s/IMAGE_NAME/${IMAGE_NAME}/g" demo.yaml
