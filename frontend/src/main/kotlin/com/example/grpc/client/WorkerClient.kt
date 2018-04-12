@@ -1,8 +1,8 @@
 package com.example.grpc.client
 
 import com.example.domain.Worker
-import com.example.generated.grpc.GreeterGrpc
-import com.example.generated.grpc.GreeterOuterClass
+import com.example.generated.grpc.WorkerGrpc
+import com.example.generated.grpc.WorkerOuterClass
 import io.grpc.ManagedChannel
 import io.grpc.ManagedChannelBuilder
 import org.springframework.stereotype.Component
@@ -11,23 +11,41 @@ import org.springframework.stereotype.Component
 class WorkerClient {
     fun getWorkers(): List<Worker> {
         val channel = getChannel()
-        var response: GreeterOuterClass.HelloReply
+        var response: WorkerOuterClass.WorkersModel
         try {
-            val stub = GreeterGrpc.newBlockingStub(getChannel())
-            val request = GreeterOuterClass.HelloRequest.newBuilder().setName("Bob").build()
-            response = stub.sayHello(request)
+            val stub = WorkerGrpc.newBlockingStub(getChannel())
+            val request = WorkerOuterClass.Empty.newBuilder().build()
+            response = stub.getWorkers(request)
         } finally {
             channel.shutdown()
         }
-        return listOf<Worker>(Worker(1, response.message))
+        return response.workerList.map { Worker(it.id, it.name) }
     }
 
-    fun getWorker(id: Int) {
-        TODO()
+    fun getWorker(id: Int): Worker {
+        val channel = getChannel()
+        var response: WorkerOuterClass.WorkerModel
+        try {
+            val stub = WorkerGrpc.newBlockingStub(getChannel())
+            val request = WorkerOuterClass.GetWorkerRequest.newBuilder().setId(id).build()
+            response = stub.getWorker(request)
+        } finally {
+            channel.shutdown()
+        }
+        return Worker(response.id, response.name)
     }
 
-    fun postWorker(worker: Worker) {
-        TODO()
+    fun postWorker(worker: Worker): Worker{
+        val channel = getChannel()
+        var response: WorkerOuterClass.WorkerModel
+        try {
+            val stub = WorkerGrpc.newBlockingStub(getChannel())
+            val request = WorkerOuterClass.WorkerModel.newBuilder().setName(worker.name).build()
+            response = stub.postWorker(request)
+        } finally {
+            channel.shutdown()
+        }
+        return Worker(response.id, response.name)
     }
 
     private fun getChannel(): ManagedChannel {
