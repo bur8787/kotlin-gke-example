@@ -35,7 +35,7 @@ class WorkerClient {
         return Worker(response.id, response.name)
     }
 
-    fun postWorker(worker: Worker): Worker{
+    fun postWorker(worker: Worker): Worker {
         val channel = getChannel()
         var response: WorkerOuterClass.WorkerModel
         try {

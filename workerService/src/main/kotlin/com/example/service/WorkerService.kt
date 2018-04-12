@@ -6,7 +6,6 @@ import com.example.generated.grpc.WorkerOuterClass
 import com.example.repository.WorkerRepository
 import io.grpc.stub.StreamObserver
 import org.lognet.springboot.grpc.GRpcService
-import org.springframework.transaction.annotation.Transactional
 
 @GRpcService
 open class WorkerService(private val repository: WorkerRepository) : WorkerGrpc.WorkerImplBase() {
