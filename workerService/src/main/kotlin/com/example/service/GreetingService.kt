@@ -1,7 +1,7 @@
-package com.example.demo
+package com.example.service
 
-import io.grpc.examples.GreeterGrpc
-import io.grpc.examples.GreeterOuterClass
+import com.example.generated.grpc.GreeterGrpc
+import com.example.generated.grpc.GreeterOuterClass
 import io.grpc.stub.StreamObserver
 import org.lognet.springboot.grpc.GRpcService
 

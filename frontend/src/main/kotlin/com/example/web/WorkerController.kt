@@ -1,7 +1,7 @@
 package com.example.web
 
 import com.example.domain.Worker
-import com.example.service.WorkerService
+import com.example.grpc.client.WorkerClient
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -12,20 +12,18 @@ import org.springframework.web.bind.annotation.RequestBody
 import java.util.concurrent.atomic.AtomicInteger
 
 @RestController
-class WorkerController(private val service: WorkerService) {
-
-    val counter = AtomicInteger()
+class WorkerController(private val client: WorkerClient) {
 
     @GetMapping("/workers")
-    fun getWorkers() = service.getWorkers()
+    fun getWorkers() = client.getWorkers()
 
     @GetMapping("/workers/{id}")
-    fun getWorker(@PathVariable id: Int) = service.getWorker(id)
+    fun getWorker(@PathVariable id: Int) = client.getWorker(id)
 
     @PostMapping("/workers")
     @ResponseStatus(HttpStatus.CREATED)
-    fun postWorkers(@RequestBody worker: Worker) = service.postWorker(worker)
+    fun postWorkers(@RequestBody worker: Worker) = client.postWorker(worker)
 
     @GetMapping("/private/workers")
-    fun getWorkersWithAuthenticated() = service.getWorkers()
+    fun getWorkersWithAuthenticated() = client.getWorkers()
 }

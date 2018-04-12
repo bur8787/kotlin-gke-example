@@ -1,13 +1,3 @@
-spring:
-  h2:
-    console:
-      enabled: true
-      path: /console
-  datasource:
-    url: jdbc:h2:~/testdb
-    driverClassName: org.h2.Driver
-    username: sa
-    password:
 auth0:
   issuer: https://t-suzuki-demo.auth0.com/
   apiAudience: https://contacts.mycompany.com
