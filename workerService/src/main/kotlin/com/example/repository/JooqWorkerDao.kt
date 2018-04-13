@@ -5,8 +5,10 @@ import com.example.generated.jooq.Tables.WORKERS
 import com.example.generated.jooq.tables.records.WorkersRecord
 import org.jooq.DSLContext
 import org.springframework.stereotype.Repository
+import org.springframework.transaction.annotation.Transactional
 
 @Repository
+@Transactional
 open class JooqWorkerDao(private val context: DSLContext) : WorkerRepository {
 
     override fun findAll() = context.selectFrom(WORKERS).fetch().map { fromRow(it) }

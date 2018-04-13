@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option java_package = "com.example.generated.grpc";
+
+service Worker {
+    rpc GetWorkers ( Empty ) returns ( WorkersModel ) {}
+    rpc GetWorker ( GetWorkerRequest ) returns ( WorkerModel ) {}
+    rpc PostWorker ( WorkerModel ) returns (  WorkerModel ) {}
+
+}
+
+message Empty {}
+
+message WorkerModel {
+    string name = 1;
+    int32 id = 2;
+}
+
+message WorkersModel {
+    repeated WorkerModel worker = 1;
+}
+
+message GetWorkerRequest {
+    int32 id = 1;
+}
+
