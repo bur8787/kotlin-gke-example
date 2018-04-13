@@ -18,7 +18,7 @@ buildscript {
 }
 
 apply plugin: 'kotlin' 
-apply plugin: "kotlin-spring"
+apply plugin: 'kotlin-spring'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'org.jlleitschuh.gradle.ktlint'
@@ -33,10 +33,12 @@ jar {
 repositories {
     jcenter()
     maven {
-        url  "https://dl.bintray.com/kotlin/exposed"
+        url 'https://dl.bintray.com/kotlin/exposed'
+    }
+    maven {
+        url 'https://repo.spring.io/libs-milestone'
     }
 }
-
 
 sourceSets {
     main {
@@ -58,10 +60,12 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-devtools'
     compile 'org.lognet:grpc-spring-boot-starter:2.3.1'
     compile 'org.jooq:jooq'
+    compile 'mysql:mysql-connector-java'
 
     runtime 'com.h2database:h2'
 
     jooqRuntime 'com.h2database:h2'
+    jooqRuntime 'mysql:mysql-connector-java'
 
     testCompile 'org.springframework.boot:spring-boot-starter-test'
 }
@@ -72,7 +76,7 @@ protobuf {
     }
     plugins {
         grpc {
-            artifact = "io.grpc:protoc-gen-grpc-java:1.7.0"
+            artifact = 'io.grpc:protoc-gen-grpc-java:1.7.0'
         }
     }
     generateProtoTasks {
@@ -97,15 +101,15 @@ jooq {
     edition = 'OSS'
     worker(sourceSets.main) {
         jdbc {
-            driver = 'org.h2.Driver'
-            url = 'jdbc:h2:~/testdb'
+            driver = 'com.mysql.cj.jdbc.Driver'
+            url = 'jdbc:mysql://127.0.0.1/public'
             user = 'sa'
             password = ''
         }
         generator {
             database {
-                name = 'org.jooq.util.h2.H2Database'
-                inputSchema = 'PUBLIC'
+                name = 'org.jooq.util.mysql.MySQLDatabase'
+                inputSchema = 'public'
             }
             target {
                 packageName = 'com.example.generated.jooq'
@@ -114,3 +118,7 @@ jooq {
         }
     }
 }
+
+project.tasks.getByName('compileJava').dependsOn -= 'generateWorkerJooqSchemaSource'
+project.tasks.getByName('clean').dependsOn -= 'cleanGenerateWorkerJooqSchemaSource'
+

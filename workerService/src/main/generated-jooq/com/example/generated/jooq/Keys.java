@@ -10,12 +10,13 @@ import com.example.generated.jooq.tables.records.WorkersRecord;
 import javax.annotation.Generated;
 
 import org.jooq.Identity;
+import org.jooq.UniqueKey;
 import org.jooq.impl.AbstractKeys;
 
 
 /**
  * A class modelling foreign key relationships and constraints of tables of 
- * the <code>PUBLIC</code> schema.
+ * the <code>public</code> schema.
  */
 @Generated(
     value = {
@@ -37,6 +38,7 @@ public class Keys {
     // UNIQUE and PRIMARY KEY definitions
     // -------------------------------------------------------------------------
 
+    public static final UniqueKey<WorkersRecord> KEY_WORKERS_PRIMARY = UniqueKeys0.KEY_WORKERS_PRIMARY;
 
     // -------------------------------------------------------------------------
     // FOREIGN KEY definitions
@@ -49,5 +51,9 @@ public class Keys {
 
     private static class Identities0 extends AbstractKeys {
         public static Identity<WorkersRecord, Integer> IDENTITY_WORKERS = createIdentity(Workers.WORKERS, Workers.WORKERS.ID);
+    }
+
+    private static class UniqueKeys0 extends AbstractKeys {
+        public static final UniqueKey<WorkersRecord> KEY_WORKERS_PRIMARY = createUniqueKey(Workers.WORKERS, "KEY_workers_PRIMARY", Workers.WORKERS.ID);
     }
 }

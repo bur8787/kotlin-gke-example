@@ -14,7 +14,7 @@ import org.jooq.impl.AbstractKeys;
 
 
 /**
- * A class modelling indexes of tables of the <code>PUBLIC</code> schema.
+ * A class modelling indexes of tables of the <code>public</code> schema.
  */
 @Generated(
     value = {
@@ -30,13 +30,13 @@ public class Indexes {
     // INDEX definitions
     // -------------------------------------------------------------------------
 
-    public static final Index PRIMARY_KEY_8 = Indexes0.PRIMARY_KEY_8;
+    public static final Index WORKERS_PRIMARY = Indexes0.WORKERS_PRIMARY;
 
     // -------------------------------------------------------------------------
     // [#1459] distribute members to avoid static initialisers > 64kb
     // -------------------------------------------------------------------------
 
     private static class Indexes0 extends AbstractKeys {
-        public static Index PRIMARY_KEY_8 = createIndex("PRIMARY_KEY_8", Workers.WORKERS, new OrderField[] { Workers.WORKERS.ID }, true);
+        public static Index WORKERS_PRIMARY = createIndex("PRIMARY", Workers.WORKERS, new OrderField[] { Workers.WORKERS.ID }, true);
     }
 }

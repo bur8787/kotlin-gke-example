@@ -10,7 +10,7 @@ import javax.annotation.Generated;
 
 
 /**
- * Convenience access to all tables in PUBLIC
+ * Convenience access to all tables in public
  */
 @Generated(
     value = {
@@ -23,7 +23,7 @@ import javax.annotation.Generated;
 public class Tables {
 
     /**
-     * The table <code>PUBLIC.WORKERS</code>.
+     * The table <code>public.workers</code>.
      */
     public static final Workers WORKERS = com.example.generated.jooq.tables.Workers.WORKERS;
 }
