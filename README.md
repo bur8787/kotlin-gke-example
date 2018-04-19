@@ -89,8 +89,8 @@ https://github.com/LogNet/grpc-spring-boot-starter
 
 ## Cloud SQL
 
-spring-cloud-gcp-sql-sample
-https://github.com/spring-cloud/spring-cloud-gcp/tree/master/spring-cloud-gcp-samples/spring-cloud-gcp-sql-sample
+Connect Kubernetes Engine
+https://cloud.google.com/sql/docs/mysql/connect-kubernetes-engine
 
 ## Appendix
 
