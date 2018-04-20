@@ -17,7 +17,7 @@ spec:
           image: gcr.io/GOOGLE_PROJECT_ID/IMAGE_NAME:IMAGE_VERSION
           imagePullPolicy: Always
           ports:
-            - containerPort: 8080
+            - containerPort: 6565
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: review
@@ -40,6 +40,13 @@ spec:
             - name: cloudsql-instance-credentials
               mountPath: /secrets/cloudsql
               readOnly: true
+        - name: grpc-webproxy
+          image: jfyne/docker-grpcwebproxy
+          ports:
+            - containerPort: 8080
+          command: ["/grpcwebproxy",
+                    "--backend_addr=127.0.0.1:6565",
+                    "--run_tls_server=false"]
       volumes:
         - name: cloudsql-instance-credentials
           secret:
