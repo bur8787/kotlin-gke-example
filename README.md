@@ -1,6 +1,6 @@
-## Goal
+# Microservice with Spring Boot in Google Kubernetes Engine
 
-Building an application using the following technology stack
+Building an application using the following technology stack.
 
 Spring Boot / Kotlin / k8s (Google Kubernetes Engine) / CircleCI / RDB (Cloud SQL) / Cloud Endpoints / Firebase / gRPC
 
@@ -17,21 +17,7 @@ There are two ways to build development environment locally.
 
 ### Use Kubenetes
 
-#### Start Kubenetes
-
-```
-$ kubectl use-context xxxx
-$ kubectl create -f worker-service/xxxx --env=local
-```
-
-#### Start Web client
-
-```
-$ cd web-client
-$ ionic serve --env=local
-```
-
-Now, you can access http://localhost:8100
+Comming soon.
 
 ### Not use Kubenetes
 
@@ -55,11 +41,11 @@ $ cd web-client
 $ ionic serve --env=local
 ```
 
-Now, you can access http://localhost:8100
+Now, you can access http://localhost:8100 .
 
 ## Build on Google Cloud Platform with CircleCI
 
-comming soon
+Comming soon.
 
 # Appendix
 
@@ -131,7 +117,7 @@ You can exclude the generated code from version control. But this project is inc
 generate source code
 
 ```
-./gradlew generateWorkerJooqSchemaSource
+$ ./gradlew generateWorkerJooqSchemaSource
 ```
 
 
