@@ -4,6 +4,65 @@ Building an application using the following technology stack
 
 Spring Boot / Kotlin / k8s (Google Kubernetes Engine) / CircleCI / RDB (Cloud SQL) / Cloud Endpoints / Firebase / gRPC
 
+## Architecture
+
+![diagram](https://raw.githubusercontent.com/bur8787/kotlin-gke-example/webproxy/architecture.png)
+
+## Build locally
+
+There are two ways to build development environment locally.
+
+1. Use kubenetes (Recommend)
+2. Not use kubenetes
+
+### Use Kubenetes
+
+#### Start Kubenetes
+
+```
+$ kubectl use-context xxxx
+$ kubectl create -f worker-service/xxxx --env=local
+```
+
+#### Start Web client
+
+```
+$ cd web-client
+$ ionic serve --env=local
+```
+
+Now, you can access http://localhost:8100
+
+### Not use Kubenetes
+
+#### Start worker service
+
+```
+$ cd worker-service
+$ ./gradlew bootRun -Dspring.profiles.active=local
+```
+
+#### Start gRPC Web Proxy
+
+```
+$ docker run -p 8080:8080 --rm -it jfyne/docker-grpcwebproxy /grpcwebproxy --backend_addr=host.docker.internal:6565 --run_tls_server=false
+```
+
+#### Start web client
+
+```
+$ cd web-client
+$ ionic serve --env=local
+```
+
+Now, you can access http://localhost:8100
+
+## Build on Google Cloud Platform with CircleCI
+
+comming soon
+
+# Appendix
+
 ## IDE
 
 ```
