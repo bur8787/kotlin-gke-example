@@ -1,13 +1,44 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-        gRPC Web Client
-    </ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>
+            gRPC Web Client
+        </ion-title>
+    </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <p>
-  </p>
-  <button ion-button (click)="getWorkers()">Default</button>
+    <ion-grid>
+        <ion-row>
+           <ion-col offset-2 col-8>
+               <h2>host</h2>
+               <ion-list>
+                   <ion-item>
+                       <ion-label floating>host</ion-label>
+                       <ion-input [(ngModel)]="host"></ion-input>
+                   </ion-item>
+               </ion-list>
+               <h3>GetWorkers</h3>
+               <button ion-button (click)="getWorkers()">send</button>
+               <h3>GetWorker</h3>
+               <ion-list>
+                   <ion-item>
+                       <ion-label floating>id</ion-label>
+                       <ion-input [(ngModel)]="id"></ion-input>
+                   </ion-item>
+               </ion-list>
+               <button ion-button (click)="getWorker()">send</button>
+               <h3>PostWorkers</h3>
+               <ion-list>
+                   <ion-item>
+                       <ion-label floating>name</ion-label>
+                       <ion-input [(ngModel)]="name"></ion-input>
+                   </ion-item>
+               </ion-list>
+               <button ion-button (click)="postWorker()">send</button>
+               <h2>result</h2>
+               <button ion-button (click)="clear()">clear</button>
+               <div style="background-color: #dddddd" *ngFor="let result of results">{{result}}</div>
+           </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-content>
