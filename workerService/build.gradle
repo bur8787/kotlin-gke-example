@@ -60,8 +60,8 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-devtools'
     compile 'org.lognet:grpc-spring-boot-starter:2.3.1'
     compile 'org.jooq:jooq'
-    compile 'mysql:mysql-connector-java'
 
+    compile 'mysql:mysql-connector-java'
     runtime 'com.h2database:h2'
 
     jooqRuntime 'com.h2database:h2'
@@ -101,14 +101,14 @@ jooq {
     edition = 'OSS'
     worker(sourceSets.main) {
         jdbc {
-            driver = 'com.mysql.cj.jdbc.Driver'
-            url = 'jdbc:mysql://127.0.0.1/public'
+            driver = 'org.h2.Driver'
+            url = 'jdbc:h2:~/testdb'
             user = 'sa'
             password = ''
         }
         generator {
             database {
-                name = 'org.jooq.util.mysql.MySQLDatabase'
+                name = 'org.jooq.util.h2.H2Database'
                 inputSchema = 'public'
             }
             target {
@@ -117,6 +117,10 @@ jooq {
             }
         }
     }
+}
+
+bootRun {
+    systemProperties System.properties
 }
 
 project.tasks.getByName('compileJava').dependsOn -= 'generateWorkerJooqSchemaSource'
