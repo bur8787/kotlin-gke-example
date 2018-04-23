@@ -82,6 +82,16 @@ https://github.com/etiennestuder/gradle-jooq-plugin
 Generate Kotlin data classes #6345
 https://github.com/jOOQ/jOOQ/issues/6345
 
+## gRPC
+
+LogNet/grpc-spring-boot-starter
+https://github.com/LogNet/grpc-spring-boot-starter
+
+## Cloud SQL
+
+Connect Kubernetes Engine
+https://cloud.google.com/sql/docs/mysql/connect-kubernetes-engine
+
 ## Appendix
 
 - https://github.com/keitaro1020/k8s-example

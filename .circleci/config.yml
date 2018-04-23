@@ -8,7 +8,7 @@ jobs:
       - run:
           name: Test
           command: |
-            cd frontend
+            cd workerService
             ./gradlew check -x test
             ./gradlew test
   deploy:
@@ -34,9 +34,10 @@ jobs:
       - run:
           name: Submit image
           command: |
-            cd frontend
+            cd workerService
+            sed -i -e "s/CLOUD_SQL_INSTANCE_CONNECTION_NAME/${CLOUD_SQL_INSTANCE_CONNECTION_NAME}/g" src/main/resources/application-review.yml
+            sed -i -e "s/CLOUD_SQL_INSTANCE_DATABASE_NAME/${CLOUD_SQL_INSTANCE_DATABASE_NAME}/g" src/main/resources/application-review.yml
             gcloud container builds submit --tag=gcr.io/${GOOGLE_PROJECT_ID}/${IMAGE_NAME}:${IMAGE_VERSION} .
-            gcloud container images list
       - run:
           name: Delete deployment
           command: |
@@ -45,18 +46,17 @@ jobs:
       - run:
           name: Create deployment
           command: | # gcloud container clusters create demo-cluster --num-nodes=2
-            cd frontend
+            cd workerService
             gcloud config set container/cluster ${CLUSTER_NAME}
             sed -i -e "s/GOOGLE_PROJECT_ID/${GOOGLE_PROJECT_ID}/g" demo.yaml
             sed -i -e "s/IMAGE_NAME/${IMAGE_NAME}/g" demo.yaml
             sed -i -e "s/IMAGE_VERSION/${IMAGE_VERSION}/g" demo.yaml
+            sed -i -e "s/CLOUD_SQL_INSTANCE_CONNECTION_NAME/${CLOUD_SQL_INSTANCE_CONNECTION_NAME}/g" demo.yaml
             kubectl create -f demo.yaml
-            kubectl get pods
       - run:
           name: Expose deployment
           command: |
-            kubectl expose deployment ${DEPLOYMENT_NAME} --type=LoadBalancer --port ${CONTAINER_PORT} --target-port ${CONTAINER_TARGET_PORT}
-            kubectl get service
+            kubectl expose deployment ${DEPLOYMENT_NAME} --type=LoadBalancer --port ${CONTAINER_PORT} --target-port ${CONTAINER_TARGET_PORT} --load-balancer-ip="${WORKER_SERVICE_IP}"
 
 workflows:
   version: 2

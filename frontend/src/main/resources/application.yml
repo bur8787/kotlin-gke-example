@@ -1,3 +1,5 @@
 auth0:
   issuer: https://t-suzuki-demo.auth0.com/
   apiAudience: https://contacts.mycompany.com
+server:
+  port: 8090

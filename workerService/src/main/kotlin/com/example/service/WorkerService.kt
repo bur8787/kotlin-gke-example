@@ -13,7 +13,7 @@ open class WorkerService(private val repository: WorkerRepository) : WorkerGrpc.
     override fun getWorkers(request: WorkerOuterClass.Empty, responseObserver: StreamObserver<WorkerOuterClass.WorkersModel>) {
         var replyBuilder = WorkerOuterClass.WorkersModel.newBuilder()
         repository.findAll().forEach {
-             replyBuilder.addWorker(WorkerOuterClass.WorkerModel.newBuilder().setId(it.id!!).setName(it.name))
+            replyBuilder.addWorker(WorkerOuterClass.WorkerModel.newBuilder().setId(it.id!!).setName(it.name))
         }
 
         responseObserver.onNext(replyBuilder.build())

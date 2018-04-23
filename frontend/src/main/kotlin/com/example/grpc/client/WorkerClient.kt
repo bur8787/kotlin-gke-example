@@ -49,6 +49,6 @@ class WorkerClient {
     }
 
     private fun getChannel(): ManagedChannel {
-        return ManagedChannelBuilder.forAddress("localhost", 6565).usePlaintext().build()
+        return ManagedChannelBuilder.forTarget("localhost:8080").usePlaintext().build()
     }
 }

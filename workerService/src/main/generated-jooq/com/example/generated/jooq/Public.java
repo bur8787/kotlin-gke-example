@@ -30,15 +30,15 @@ import org.jooq.impl.SchemaImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Public extends SchemaImpl {
 
-    private static final long serialVersionUID = 1113290372;
+    private static final long serialVersionUID = -885980572;
 
     /**
-     * The reference instance of <code>PUBLIC</code>
+     * The reference instance of <code>public</code>
      */
     public static final Public PUBLIC = new Public();
 
     /**
-     * The table <code>PUBLIC.WORKERS</code>.
+     * The table <code>public.workers</code>.
      */
     public final Workers WORKERS = com.example.generated.jooq.tables.Workers.WORKERS;
 
@@ -46,7 +46,7 @@ public class Public extends SchemaImpl {
      * No further instances allowed
      */
     private Public() {
-        super("PUBLIC", null);
+        super("public", null);
     }
 
 

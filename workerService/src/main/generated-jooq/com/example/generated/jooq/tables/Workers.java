@@ -21,6 +21,7 @@ import org.jooq.Name;
 import org.jooq.Schema;
 import org.jooq.Table;
 import org.jooq.TableField;
+import org.jooq.UniqueKey;
 import org.jooq.impl.DSL;
 import org.jooq.impl.TableImpl;
 
@@ -38,10 +39,10 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Workers extends TableImpl<WorkersRecord> {
 
-    private static final long serialVersionUID = -2083344769;
+    private static final long serialVersionUID = 947929669;
 
     /**
-     * The reference instance of <code>PUBLIC.WORKERS</code>
+     * The reference instance of <code>public.workers</code>
      */
     public static final Workers WORKERS = new Workers();
 
@@ -54,31 +55,31 @@ public class Workers extends TableImpl<WorkersRecord> {
     }
 
     /**
-     * The column <code>PUBLIC.WORKERS.ID</code>.
+     * The column <code>public.workers.id</code>.
      */
-    public final TableField<WorkersRecord, Integer> ID = createField("ID", org.jooq.impl.SQLDataType.INTEGER.nullable(false).identity(true), this, "");
+    public final TableField<WorkersRecord, Integer> ID = createField("id", org.jooq.impl.SQLDataType.INTEGER.nullable(false).identity(true), this, "");
 
     /**
-     * The column <code>PUBLIC.WORKERS.NAME</code>.
+     * The column <code>public.workers.name</code>.
      */
-    public final TableField<WorkersRecord, String> NAME = createField("NAME", org.jooq.impl.SQLDataType.VARCHAR(255).nullable(false), this, "");
+    public final TableField<WorkersRecord, String> NAME = createField("name", org.jooq.impl.SQLDataType.VARCHAR(255).nullable(false), this, "");
 
     /**
-     * Create a <code>PUBLIC.WORKERS</code> table reference
+     * Create a <code>public.workers</code> table reference
      */
     public Workers() {
-        this(DSL.name("WORKERS"), null);
+        this(DSL.name("workers"), null);
     }
 
     /**
-     * Create an aliased <code>PUBLIC.WORKERS</code> table reference
+     * Create an aliased <code>public.workers</code> table reference
      */
     public Workers(String alias) {
         this(DSL.name(alias), WORKERS);
     }
 
     /**
-     * Create an aliased <code>PUBLIC.WORKERS</code> table reference
+     * Create an aliased <code>public.workers</code> table reference
      */
     public Workers(Name alias) {
         this(alias, WORKERS);
@@ -105,7 +106,7 @@ public class Workers extends TableImpl<WorkersRecord> {
      */
     @Override
     public List<Index> getIndexes() {
-        return Arrays.<Index>asList(Indexes.PRIMARY_KEY_8);
+        return Arrays.<Index>asList(Indexes.WORKERS_PRIMARY);
     }
 
     /**
@@ -114,6 +115,22 @@ public class Workers extends TableImpl<WorkersRecord> {
     @Override
     public Identity<WorkersRecord, Integer> getIdentity() {
         return Keys.IDENTITY_WORKERS;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public UniqueKey<WorkersRecord> getPrimaryKey() {
+        return Keys.KEY_WORKERS_PRIMARY;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<UniqueKey<WorkersRecord>> getKeys() {
+        return Arrays.<UniqueKey<WorkersRecord>>asList(Keys.KEY_WORKERS_PRIMARY);
     }
 
     /**

@@ -1,6 +1,6 @@
 package com.example.repository
 
-import com.example.Workers
+import com.example.workers
 import com.example.domain.Worker
 import org.jetbrains.exposed.sql.ResultRow
 import org.jetbrains.exposed.sql.insert
@@ -15,16 +15,16 @@ import org.springframework.transaction.annotation.Transactional
 @Repository
 @Transactional
 open class ExposedWorkerDao : WorkerRepository {
-    override fun findAll() = Workers.selectAll().map { fromRow(it) }
+    override fun findAll() = workers.selectAll().map { fromRow(it) }
 
-    override fun findById(id: Int) = Workers.select { Workers.id eq id }.map { fromRow(it) }.get(0)
+    override fun findById(id: Int) = workers.select { workers.id eq id }.map { fromRow(it) }.get(0)
 
     override fun create(w: Worker): Worker {
-        w.id = Workers.insert(toRow(w))[Workers.id]
+        w.id = workers.insert(toRow(w))[workers.id]
         return w
     }
 
-    private fun toRow(w: Worker): Workers.(UpdateBuilder<*>) -> Unit = {
+    private fun toRow(w: Worker): workers.(UpdateBuilder<*>) -> Unit = {
         if (w.id != null) {
             it[id] = w.id!!
         }
@@ -32,6 +32,6 @@ open class ExposedWorkerDao : WorkerRepository {
     }
 
     private fun fromRow(r: ResultRow) =
-            Worker(r[Workers.id],
-                    r[Workers.name])
+            Worker(r[workers.id],
+                    r[workers.name])
 }
