@@ -20,8 +20,6 @@ jobs:
         - CLUSTER_NAME: demo-cluster
         - DEPLOYMENT_NAME: demo-deployment
         - SERVICE_NAME: demo-service
-        - CONTAINER_TARGET_PORT: 8080
-        - CONTAINER_PORT: 80
     steps:
       - checkout
       - run:
@@ -39,6 +37,23 @@ jobs:
             gcloud container builds submit --tag=gcr.io/${GOOGLE_PROJECT_ID}/${IMAGE_NAME}:${IMAGE_VERSION} .
       - run:
           name: Clean deployment
+          name: Install protoc
+          command: |
+              PROTOC_ZIP=protoc-3.3.0-linux-x86_64.zip
+              curl -OL https://github.com/google/protobuf/releases/download/v3.3.0/$PROTOC_ZIP
+              apt-get install unzip
+              unzip -o $PROTOC_ZIP -d /usr/local bin/protoc
+              rm -f $PROTOC_ZIP
+      - run:
+          name: Deploy service config to Service Management
+          command: |
+            cd protofiles
+            protoc --include_imports --include_source_info worker.proto --descriptor_set_out ../workerService/out.pb
+            cd ../workerService
+            sed -i -e "s/GOOGLE_PROJECT_ID/${GOOGLE_PROJECT_ID}/g" api_config.yaml
+            gcloud endpoints services deploy out.pb api_config.yaml
+      - run:
+          name: Delete deployment
           command: |
             kubectl delete service --ignore-not-found ${SERVICE_NAME}
             kubectl delete deployment --ignore-not-found ${DEPLOYMENT_NAME}
