@@ -2,4 +2,4 @@ auth0:
   issuer: https://t-suzuki-demo.auth0.com/
   apiAudience: https://contacts.mycompany.com
 grpc:
-  port: 8080
+  port: 6565
