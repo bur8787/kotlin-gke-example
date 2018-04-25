@@ -40,7 +40,8 @@ class WorkerClient {
         var response: WorkerOuterClass.WorkerModel
         try {
             val stub = WorkerGrpc.newBlockingStub(getChannel())
-            val request = WorkerOuterClass.WorkerModel.newBuilder().setName(worker.name).build()
+            val workerModel = WorkerOuterClass.WorkerModel.newBuilder().setName(worker.name).build()
+            val request = WorkerOuterClass.PostWorkerRequest.newBuilder().setWorker(workerModel).build()
             response = stub.postWorker(request)
         } finally {
             channel.shutdown()

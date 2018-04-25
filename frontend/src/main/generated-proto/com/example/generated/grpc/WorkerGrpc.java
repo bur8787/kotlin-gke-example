@@ -103,32 +103,32 @@ public final class WorkerGrpc {
   }
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
   @java.lang.Deprecated // Use {@link #getPostWorkerMethod()} instead. 
-  public static final io.grpc.MethodDescriptor<com.example.generated.grpc.WorkerOuterClass.WorkerModel,
+  public static final io.grpc.MethodDescriptor<com.example.generated.grpc.WorkerOuterClass.PostWorkerRequest,
       com.example.generated.grpc.WorkerOuterClass.WorkerModel> METHOD_POST_WORKER = getPostWorkerMethodHelper();
 
-  private static volatile io.grpc.MethodDescriptor<com.example.generated.grpc.WorkerOuterClass.WorkerModel,
+  private static volatile io.grpc.MethodDescriptor<com.example.generated.grpc.WorkerOuterClass.PostWorkerRequest,
       com.example.generated.grpc.WorkerOuterClass.WorkerModel> getPostWorkerMethod;
 
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
-  public static io.grpc.MethodDescriptor<com.example.generated.grpc.WorkerOuterClass.WorkerModel,
+  public static io.grpc.MethodDescriptor<com.example.generated.grpc.WorkerOuterClass.PostWorkerRequest,
       com.example.generated.grpc.WorkerOuterClass.WorkerModel> getPostWorkerMethod() {
     return getPostWorkerMethodHelper();
   }
 
-  private static io.grpc.MethodDescriptor<com.example.generated.grpc.WorkerOuterClass.WorkerModel,
+  private static io.grpc.MethodDescriptor<com.example.generated.grpc.WorkerOuterClass.PostWorkerRequest,
       com.example.generated.grpc.WorkerOuterClass.WorkerModel> getPostWorkerMethodHelper() {
-    io.grpc.MethodDescriptor<com.example.generated.grpc.WorkerOuterClass.WorkerModel, com.example.generated.grpc.WorkerOuterClass.WorkerModel> getPostWorkerMethod;
+    io.grpc.MethodDescriptor<com.example.generated.grpc.WorkerOuterClass.PostWorkerRequest, com.example.generated.grpc.WorkerOuterClass.WorkerModel> getPostWorkerMethod;
     if ((getPostWorkerMethod = WorkerGrpc.getPostWorkerMethod) == null) {
       synchronized (WorkerGrpc.class) {
         if ((getPostWorkerMethod = WorkerGrpc.getPostWorkerMethod) == null) {
           WorkerGrpc.getPostWorkerMethod = getPostWorkerMethod = 
-              io.grpc.MethodDescriptor.<com.example.generated.grpc.WorkerOuterClass.WorkerModel, com.example.generated.grpc.WorkerOuterClass.WorkerModel>newBuilder()
+              io.grpc.MethodDescriptor.<com.example.generated.grpc.WorkerOuterClass.PostWorkerRequest, com.example.generated.grpc.WorkerOuterClass.WorkerModel>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "Worker", "PostWorker"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.example.generated.grpc.WorkerOuterClass.WorkerModel.getDefaultInstance()))
+                  com.example.generated.grpc.WorkerOuterClass.PostWorkerRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   com.example.generated.grpc.WorkerOuterClass.WorkerModel.getDefaultInstance()))
                   .setSchemaDescriptor(new WorkerMethodDescriptorSupplier("PostWorker"))
@@ -182,7 +182,7 @@ public final class WorkerGrpc {
 
     /**
      */
-    public void postWorker(com.example.generated.grpc.WorkerOuterClass.WorkerModel request,
+    public void postWorker(com.example.generated.grpc.WorkerOuterClass.PostWorkerRequest request,
         io.grpc.stub.StreamObserver<com.example.generated.grpc.WorkerOuterClass.WorkerModel> responseObserver) {
       asyncUnimplementedUnaryCall(getPostWorkerMethodHelper(), responseObserver);
     }
@@ -207,7 +207,7 @@ public final class WorkerGrpc {
             getPostWorkerMethodHelper(),
             asyncUnaryCall(
               new MethodHandlers<
-                com.example.generated.grpc.WorkerOuterClass.WorkerModel,
+                com.example.generated.grpc.WorkerOuterClass.PostWorkerRequest,
                 com.example.generated.grpc.WorkerOuterClass.WorkerModel>(
                   this, METHODID_POST_WORKER)))
           .build();
@@ -250,7 +250,7 @@ public final class WorkerGrpc {
 
     /**
      */
-    public void postWorker(com.example.generated.grpc.WorkerOuterClass.WorkerModel request,
+    public void postWorker(com.example.generated.grpc.WorkerOuterClass.PostWorkerRequest request,
         io.grpc.stub.StreamObserver<com.example.generated.grpc.WorkerOuterClass.WorkerModel> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getPostWorkerMethodHelper(), getCallOptions()), request, responseObserver);
@@ -291,7 +291,7 @@ public final class WorkerGrpc {
 
     /**
      */
-    public com.example.generated.grpc.WorkerOuterClass.WorkerModel postWorker(com.example.generated.grpc.WorkerOuterClass.WorkerModel request) {
+    public com.example.generated.grpc.WorkerOuterClass.WorkerModel postWorker(com.example.generated.grpc.WorkerOuterClass.PostWorkerRequest request) {
       return blockingUnaryCall(
           getChannel(), getPostWorkerMethodHelper(), getCallOptions(), request);
     }
@@ -334,7 +334,7 @@ public final class WorkerGrpc {
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<com.example.generated.grpc.WorkerOuterClass.WorkerModel> postWorker(
-        com.example.generated.grpc.WorkerOuterClass.WorkerModel request) {
+        com.example.generated.grpc.WorkerOuterClass.PostWorkerRequest request) {
       return futureUnaryCall(
           getChannel().newCall(getPostWorkerMethodHelper(), getCallOptions()), request);
     }
@@ -370,7 +370,7 @@ public final class WorkerGrpc {
               (io.grpc.stub.StreamObserver<com.example.generated.grpc.WorkerOuterClass.WorkerModel>) responseObserver);
           break;
         case METHODID_POST_WORKER:
-          serviceImpl.postWorker((com.example.generated.grpc.WorkerOuterClass.WorkerModel) request,
+          serviceImpl.postWorker((com.example.generated.grpc.WorkerOuterClass.PostWorkerRequest) request,
               (io.grpc.stub.StreamObserver<com.example.generated.grpc.WorkerOuterClass.WorkerModel>) responseObserver);
           break;
         default:

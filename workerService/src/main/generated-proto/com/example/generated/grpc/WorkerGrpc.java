@@ -1,24 +1,24 @@
 package com.example.generated.grpc;
 
-import static io.grpc.stub.ClientCalls.asyncUnaryCall;
-import static io.grpc.stub.ClientCalls.asyncServerStreamingCall;
-import static io.grpc.stub.ClientCalls.asyncClientStreamingCall;
-import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
-import static io.grpc.stub.ClientCalls.blockingUnaryCall;
-import static io.grpc.stub.ClientCalls.blockingServerStreamingCall;
-import static io.grpc.stub.ClientCalls.futureUnaryCall;
 import static io.grpc.MethodDescriptor.generateFullMethodName;
-import static io.grpc.stub.ServerCalls.asyncUnaryCall;
-import static io.grpc.stub.ServerCalls.asyncServerStreamingCall;
-import static io.grpc.stub.ServerCalls.asyncClientStreamingCall;
+import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
+import static io.grpc.stub.ClientCalls.asyncClientStreamingCall;
+import static io.grpc.stub.ClientCalls.asyncServerStreamingCall;
+import static io.grpc.stub.ClientCalls.asyncUnaryCall;
+import static io.grpc.stub.ClientCalls.blockingServerStreamingCall;
+import static io.grpc.stub.ClientCalls.blockingUnaryCall;
+import static io.grpc.stub.ClientCalls.futureUnaryCall;
 import static io.grpc.stub.ServerCalls.asyncBidiStreamingCall;
-import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
+import static io.grpc.stub.ServerCalls.asyncClientStreamingCall;
+import static io.grpc.stub.ServerCalls.asyncServerStreamingCall;
+import static io.grpc.stub.ServerCalls.asyncUnaryCall;
 import static io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall;
+import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
 
 /**
  */
 @javax.annotation.Generated(
-    value = "by gRPC proto compiler (version 1.7.0)",
+    value = "by gRPC proto compiler (version 1.11.0)",
     comments = "Source: worker.proto")
 public final class WorkerGrpc {
 
@@ -28,44 +28,116 @@ public final class WorkerGrpc {
 
   // Static method descriptors that strictly reflect the proto.
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
+  @java.lang.Deprecated // Use {@link #getGetWorkersMethod()} instead. 
   public static final io.grpc.MethodDescriptor<com.example.generated.grpc.WorkerOuterClass.Empty,
-      com.example.generated.grpc.WorkerOuterClass.WorkersModel> METHOD_GET_WORKERS =
-      io.grpc.MethodDescriptor.<com.example.generated.grpc.WorkerOuterClass.Empty, com.example.generated.grpc.WorkerOuterClass.WorkersModel>newBuilder()
-          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-          .setFullMethodName(generateFullMethodName(
-              "Worker", "GetWorkers"))
-          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              com.example.generated.grpc.WorkerOuterClass.Empty.getDefaultInstance()))
-          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              com.example.generated.grpc.WorkerOuterClass.WorkersModel.getDefaultInstance()))
-          .setSchemaDescriptor(new WorkerMethodDescriptorSupplier("GetWorkers"))
-          .build();
+      com.example.generated.grpc.WorkerOuterClass.WorkersModel> METHOD_GET_WORKERS = getGetWorkersMethodHelper();
+
+  private static volatile io.grpc.MethodDescriptor<com.example.generated.grpc.WorkerOuterClass.Empty,
+      com.example.generated.grpc.WorkerOuterClass.WorkersModel> getGetWorkersMethod;
+
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
+  public static io.grpc.MethodDescriptor<com.example.generated.grpc.WorkerOuterClass.Empty,
+      com.example.generated.grpc.WorkerOuterClass.WorkersModel> getGetWorkersMethod() {
+    return getGetWorkersMethodHelper();
+  }
+
+  private static io.grpc.MethodDescriptor<com.example.generated.grpc.WorkerOuterClass.Empty,
+      com.example.generated.grpc.WorkerOuterClass.WorkersModel> getGetWorkersMethodHelper() {
+    io.grpc.MethodDescriptor<com.example.generated.grpc.WorkerOuterClass.Empty, com.example.generated.grpc.WorkerOuterClass.WorkersModel> getGetWorkersMethod;
+    if ((getGetWorkersMethod = WorkerGrpc.getGetWorkersMethod) == null) {
+      synchronized (WorkerGrpc.class) {
+        if ((getGetWorkersMethod = WorkerGrpc.getGetWorkersMethod) == null) {
+          WorkerGrpc.getGetWorkersMethod = getGetWorkersMethod = 
+              io.grpc.MethodDescriptor.<com.example.generated.grpc.WorkerOuterClass.Empty, com.example.generated.grpc.WorkerOuterClass.WorkersModel>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "Worker", "GetWorkers"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.example.generated.grpc.WorkerOuterClass.Empty.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.example.generated.grpc.WorkerOuterClass.WorkersModel.getDefaultInstance()))
+                  .setSchemaDescriptor(new WorkerMethodDescriptorSupplier("GetWorkers"))
+                  .build();
+          }
+        }
+     }
+     return getGetWorkersMethod;
+  }
+  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
+  @java.lang.Deprecated // Use {@link #getGetWorkerMethod()} instead. 
   public static final io.grpc.MethodDescriptor<com.example.generated.grpc.WorkerOuterClass.GetWorkerRequest,
-      com.example.generated.grpc.WorkerOuterClass.WorkerModel> METHOD_GET_WORKER =
-      io.grpc.MethodDescriptor.<com.example.generated.grpc.WorkerOuterClass.GetWorkerRequest, com.example.generated.grpc.WorkerOuterClass.WorkerModel>newBuilder()
-          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-          .setFullMethodName(generateFullMethodName(
-              "Worker", "GetWorker"))
-          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              com.example.generated.grpc.WorkerOuterClass.GetWorkerRequest.getDefaultInstance()))
-          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              com.example.generated.grpc.WorkerOuterClass.WorkerModel.getDefaultInstance()))
-          .setSchemaDescriptor(new WorkerMethodDescriptorSupplier("GetWorker"))
-          .build();
+      com.example.generated.grpc.WorkerOuterClass.WorkerModel> METHOD_GET_WORKER = getGetWorkerMethodHelper();
+
+  private static volatile io.grpc.MethodDescriptor<com.example.generated.grpc.WorkerOuterClass.GetWorkerRequest,
+      com.example.generated.grpc.WorkerOuterClass.WorkerModel> getGetWorkerMethod;
+
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
-  public static final io.grpc.MethodDescriptor<com.example.generated.grpc.WorkerOuterClass.WorkerModel,
-      com.example.generated.grpc.WorkerOuterClass.WorkerModel> METHOD_POST_WORKER =
-      io.grpc.MethodDescriptor.<com.example.generated.grpc.WorkerOuterClass.WorkerModel, com.example.generated.grpc.WorkerOuterClass.WorkerModel>newBuilder()
-          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-          .setFullMethodName(generateFullMethodName(
-              "Worker", "PostWorker"))
-          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              com.example.generated.grpc.WorkerOuterClass.WorkerModel.getDefaultInstance()))
-          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              com.example.generated.grpc.WorkerOuterClass.WorkerModel.getDefaultInstance()))
-          .setSchemaDescriptor(new WorkerMethodDescriptorSupplier("PostWorker"))
-          .build();
+  public static io.grpc.MethodDescriptor<com.example.generated.grpc.WorkerOuterClass.GetWorkerRequest,
+      com.example.generated.grpc.WorkerOuterClass.WorkerModel> getGetWorkerMethod() {
+    return getGetWorkerMethodHelper();
+  }
+
+  private static io.grpc.MethodDescriptor<com.example.generated.grpc.WorkerOuterClass.GetWorkerRequest,
+      com.example.generated.grpc.WorkerOuterClass.WorkerModel> getGetWorkerMethodHelper() {
+    io.grpc.MethodDescriptor<com.example.generated.grpc.WorkerOuterClass.GetWorkerRequest, com.example.generated.grpc.WorkerOuterClass.WorkerModel> getGetWorkerMethod;
+    if ((getGetWorkerMethod = WorkerGrpc.getGetWorkerMethod) == null) {
+      synchronized (WorkerGrpc.class) {
+        if ((getGetWorkerMethod = WorkerGrpc.getGetWorkerMethod) == null) {
+          WorkerGrpc.getGetWorkerMethod = getGetWorkerMethod = 
+              io.grpc.MethodDescriptor.<com.example.generated.grpc.WorkerOuterClass.GetWorkerRequest, com.example.generated.grpc.WorkerOuterClass.WorkerModel>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "Worker", "GetWorker"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.example.generated.grpc.WorkerOuterClass.GetWorkerRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.example.generated.grpc.WorkerOuterClass.WorkerModel.getDefaultInstance()))
+                  .setSchemaDescriptor(new WorkerMethodDescriptorSupplier("GetWorker"))
+                  .build();
+          }
+        }
+     }
+     return getGetWorkerMethod;
+  }
+  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
+  @java.lang.Deprecated // Use {@link #getPostWorkerMethod()} instead. 
+  public static final io.grpc.MethodDescriptor<com.example.generated.grpc.WorkerOuterClass.PostWorkerRequest,
+      com.example.generated.grpc.WorkerOuterClass.WorkerModel> METHOD_POST_WORKER = getPostWorkerMethodHelper();
+
+  private static volatile io.grpc.MethodDescriptor<com.example.generated.grpc.WorkerOuterClass.PostWorkerRequest,
+      com.example.generated.grpc.WorkerOuterClass.WorkerModel> getPostWorkerMethod;
+
+  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
+  public static io.grpc.MethodDescriptor<com.example.generated.grpc.WorkerOuterClass.PostWorkerRequest,
+      com.example.generated.grpc.WorkerOuterClass.WorkerModel> getPostWorkerMethod() {
+    return getPostWorkerMethodHelper();
+  }
+
+  private static io.grpc.MethodDescriptor<com.example.generated.grpc.WorkerOuterClass.PostWorkerRequest,
+      com.example.generated.grpc.WorkerOuterClass.WorkerModel> getPostWorkerMethodHelper() {
+    io.grpc.MethodDescriptor<com.example.generated.grpc.WorkerOuterClass.PostWorkerRequest, com.example.generated.grpc.WorkerOuterClass.WorkerModel> getPostWorkerMethod;
+    if ((getPostWorkerMethod = WorkerGrpc.getPostWorkerMethod) == null) {
+      synchronized (WorkerGrpc.class) {
+        if ((getPostWorkerMethod = WorkerGrpc.getPostWorkerMethod) == null) {
+          WorkerGrpc.getPostWorkerMethod = getPostWorkerMethod = 
+              io.grpc.MethodDescriptor.<com.example.generated.grpc.WorkerOuterClass.PostWorkerRequest, com.example.generated.grpc.WorkerOuterClass.WorkerModel>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "Worker", "PostWorker"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.example.generated.grpc.WorkerOuterClass.PostWorkerRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.example.generated.grpc.WorkerOuterClass.WorkerModel.getDefaultInstance()))
+                  .setSchemaDescriptor(new WorkerMethodDescriptorSupplier("PostWorker"))
+                  .build();
+          }
+        }
+     }
+     return getPostWorkerMethod;
+  }
 
   /**
    * Creates a new async stub that supports all call types for the service
@@ -98,44 +170,44 @@ public final class WorkerGrpc {
      */
     public void getWorkers(com.example.generated.grpc.WorkerOuterClass.Empty request,
         io.grpc.stub.StreamObserver<com.example.generated.grpc.WorkerOuterClass.WorkersModel> responseObserver) {
-      asyncUnimplementedUnaryCall(METHOD_GET_WORKERS, responseObserver);
+      asyncUnimplementedUnaryCall(getGetWorkersMethodHelper(), responseObserver);
     }
 
     /**
      */
     public void getWorker(com.example.generated.grpc.WorkerOuterClass.GetWorkerRequest request,
         io.grpc.stub.StreamObserver<com.example.generated.grpc.WorkerOuterClass.WorkerModel> responseObserver) {
-      asyncUnimplementedUnaryCall(METHOD_GET_WORKER, responseObserver);
+      asyncUnimplementedUnaryCall(getGetWorkerMethodHelper(), responseObserver);
     }
 
     /**
      */
-    public void postWorker(com.example.generated.grpc.WorkerOuterClass.WorkerModel request,
+    public void postWorker(com.example.generated.grpc.WorkerOuterClass.PostWorkerRequest request,
         io.grpc.stub.StreamObserver<com.example.generated.grpc.WorkerOuterClass.WorkerModel> responseObserver) {
-      asyncUnimplementedUnaryCall(METHOD_POST_WORKER, responseObserver);
+      asyncUnimplementedUnaryCall(getPostWorkerMethodHelper(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
-            METHOD_GET_WORKERS,
+            getGetWorkersMethodHelper(),
             asyncUnaryCall(
               new MethodHandlers<
                 com.example.generated.grpc.WorkerOuterClass.Empty,
                 com.example.generated.grpc.WorkerOuterClass.WorkersModel>(
                   this, METHODID_GET_WORKERS)))
           .addMethod(
-            METHOD_GET_WORKER,
+            getGetWorkerMethodHelper(),
             asyncUnaryCall(
               new MethodHandlers<
                 com.example.generated.grpc.WorkerOuterClass.GetWorkerRequest,
                 com.example.generated.grpc.WorkerOuterClass.WorkerModel>(
                   this, METHODID_GET_WORKER)))
           .addMethod(
-            METHOD_POST_WORKER,
+            getPostWorkerMethodHelper(),
             asyncUnaryCall(
               new MethodHandlers<
-                com.example.generated.grpc.WorkerOuterClass.WorkerModel,
+                com.example.generated.grpc.WorkerOuterClass.PostWorkerRequest,
                 com.example.generated.grpc.WorkerOuterClass.WorkerModel>(
                   this, METHODID_POST_WORKER)))
           .build();
@@ -165,7 +237,7 @@ public final class WorkerGrpc {
     public void getWorkers(com.example.generated.grpc.WorkerOuterClass.Empty request,
         io.grpc.stub.StreamObserver<com.example.generated.grpc.WorkerOuterClass.WorkersModel> responseObserver) {
       asyncUnaryCall(
-          getChannel().newCall(METHOD_GET_WORKERS, getCallOptions()), request, responseObserver);
+          getChannel().newCall(getGetWorkersMethodHelper(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -173,15 +245,15 @@ public final class WorkerGrpc {
     public void getWorker(com.example.generated.grpc.WorkerOuterClass.GetWorkerRequest request,
         io.grpc.stub.StreamObserver<com.example.generated.grpc.WorkerOuterClass.WorkerModel> responseObserver) {
       asyncUnaryCall(
-          getChannel().newCall(METHOD_GET_WORKER, getCallOptions()), request, responseObserver);
+          getChannel().newCall(getGetWorkerMethodHelper(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void postWorker(com.example.generated.grpc.WorkerOuterClass.WorkerModel request,
+    public void postWorker(com.example.generated.grpc.WorkerOuterClass.PostWorkerRequest request,
         io.grpc.stub.StreamObserver<com.example.generated.grpc.WorkerOuterClass.WorkerModel> responseObserver) {
       asyncUnaryCall(
-          getChannel().newCall(METHOD_POST_WORKER, getCallOptions()), request, responseObserver);
+          getChannel().newCall(getPostWorkerMethodHelper(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -207,21 +279,21 @@ public final class WorkerGrpc {
      */
     public com.example.generated.grpc.WorkerOuterClass.WorkersModel getWorkers(com.example.generated.grpc.WorkerOuterClass.Empty request) {
       return blockingUnaryCall(
-          getChannel(), METHOD_GET_WORKERS, getCallOptions(), request);
+          getChannel(), getGetWorkersMethodHelper(), getCallOptions(), request);
     }
 
     /**
      */
     public com.example.generated.grpc.WorkerOuterClass.WorkerModel getWorker(com.example.generated.grpc.WorkerOuterClass.GetWorkerRequest request) {
       return blockingUnaryCall(
-          getChannel(), METHOD_GET_WORKER, getCallOptions(), request);
+          getChannel(), getGetWorkerMethodHelper(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.example.generated.grpc.WorkerOuterClass.WorkerModel postWorker(com.example.generated.grpc.WorkerOuterClass.WorkerModel request) {
+    public com.example.generated.grpc.WorkerOuterClass.WorkerModel postWorker(com.example.generated.grpc.WorkerOuterClass.PostWorkerRequest request) {
       return blockingUnaryCall(
-          getChannel(), METHOD_POST_WORKER, getCallOptions(), request);
+          getChannel(), getPostWorkerMethodHelper(), getCallOptions(), request);
     }
   }
 
@@ -248,7 +320,7 @@ public final class WorkerGrpc {
     public com.google.common.util.concurrent.ListenableFuture<com.example.generated.grpc.WorkerOuterClass.WorkersModel> getWorkers(
         com.example.generated.grpc.WorkerOuterClass.Empty request) {
       return futureUnaryCall(
-          getChannel().newCall(METHOD_GET_WORKERS, getCallOptions()), request);
+          getChannel().newCall(getGetWorkersMethodHelper(), getCallOptions()), request);
     }
 
     /**
@@ -256,15 +328,15 @@ public final class WorkerGrpc {
     public com.google.common.util.concurrent.ListenableFuture<com.example.generated.grpc.WorkerOuterClass.WorkerModel> getWorker(
         com.example.generated.grpc.WorkerOuterClass.GetWorkerRequest request) {
       return futureUnaryCall(
-          getChannel().newCall(METHOD_GET_WORKER, getCallOptions()), request);
+          getChannel().newCall(getGetWorkerMethodHelper(), getCallOptions()), request);
     }
 
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<com.example.generated.grpc.WorkerOuterClass.WorkerModel> postWorker(
-        com.example.generated.grpc.WorkerOuterClass.WorkerModel request) {
+        com.example.generated.grpc.WorkerOuterClass.PostWorkerRequest request) {
       return futureUnaryCall(
-          getChannel().newCall(METHOD_POST_WORKER, getCallOptions()), request);
+          getChannel().newCall(getPostWorkerMethodHelper(), getCallOptions()), request);
     }
   }
 
@@ -298,7 +370,7 @@ public final class WorkerGrpc {
               (io.grpc.stub.StreamObserver<com.example.generated.grpc.WorkerOuterClass.WorkerModel>) responseObserver);
           break;
         case METHODID_POST_WORKER:
-          serviceImpl.postWorker((com.example.generated.grpc.WorkerOuterClass.WorkerModel) request,
+          serviceImpl.postWorker((com.example.generated.grpc.WorkerOuterClass.PostWorkerRequest) request,
               (io.grpc.stub.StreamObserver<com.example.generated.grpc.WorkerOuterClass.WorkerModel>) responseObserver);
           break;
         default:
@@ -362,9 +434,9 @@ public final class WorkerGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new WorkerFileDescriptorSupplier())
-              .addMethod(METHOD_GET_WORKERS)
-              .addMethod(METHOD_GET_WORKER)
-              .addMethod(METHOD_POST_WORKER)
+              .addMethod(getGetWorkersMethodHelper())
+              .addMethod(getGetWorkerMethodHelper())
+              .addMethod(getPostWorkerMethodHelper())
               .build();
         }
       }

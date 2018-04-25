@@ -5,7 +5,7 @@ option java_package = "com.example.generated.grpc";
 service Worker {
     rpc GetWorkers ( Empty ) returns ( WorkersModel ) {}
     rpc GetWorker ( GetWorkerRequest ) returns ( WorkerModel ) {}
-    rpc PostWorker ( WorkerModel /* only "name" required */ ) returns (  WorkerModel ) {}
+    rpc PostWorker ( PostWorkerRequest /* only "name" required */ ) returns (  WorkerModel ) {}
 
 }
 
@@ -23,4 +23,9 @@ message WorkersModel {
 message GetWorkerRequest {
     int32 id = 1;
 }
+
+message PostWorkerRequest {
+    WorkerModel worker = 1;
+}
+
 

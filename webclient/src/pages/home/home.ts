@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
-import {Empty, GetWorkerRequest, WorkerModel} from "../../generated/worker_pb";
+import {Empty, GetWorkerRequest, PostWorkerRequest, WorkerModel} from "../../generated/worker_pb";
 import {grpc} from "grpc-web-client";
 import {Worker} from "../../generated/worker_pb_service";
 
@@ -53,8 +53,10 @@ export class HomePage {
     }
 
     postWorker() {
-        const request = new WorkerModel();
-        request.setName(this.name)
+        const workerModel = new WorkerModel()
+        workerModel.setName(this.name)
+        const request = new PostWorkerRequest()
+        request.setWorker(workerModel)
         grpc.unary(Worker.PostWorker, {
             request: request,
             host: this.host,

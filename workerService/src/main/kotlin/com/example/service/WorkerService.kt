@@ -28,8 +28,8 @@ open class WorkerService(private val repository: WorkerRepository) : WorkerGrpc.
         responseObserver.onCompleted()
     }
 
-    override fun postWorker(request: WorkerOuterClass.WorkerModel, responseObserver: StreamObserver<WorkerOuterClass.WorkerModel>) {
-        val worker = repository.create(Worker(null, request.name))
+    override fun postWorker(request: WorkerOuterClass.PostWorkerRequest, responseObserver: StreamObserver<WorkerOuterClass.WorkerModel>) {
+        val worker = repository.create(Worker(null, request.worker.name))
         var replyBuilder = WorkerOuterClass.WorkerModel.newBuilder()
         replyBuilder.setId(worker.id!!).setName(worker.name)
         responseObserver.onNext(replyBuilder.build())
