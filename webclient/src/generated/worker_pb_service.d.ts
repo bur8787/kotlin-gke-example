@@ -27,7 +27,7 @@ type WorkerPostWorker = {
   readonly service: typeof Worker;
   readonly requestStream: false;
   readonly responseStream: false;
-  readonly requestType: typeof worker_pb.WorkerModel;
+  readonly requestType: typeof worker_pb.PostWorkerRequest;
   readonly responseType: typeof worker_pb.WorkerModel;
 };
 
@@ -72,12 +72,12 @@ export class WorkerClient {
     callback: (error: ServiceError, responseMessage: worker_pb.WorkerModel|null) => void
   ): void;
   postWorker(
-    requestMessage: worker_pb.WorkerModel,
+    requestMessage: worker_pb.PostWorkerRequest,
     metadata: grpc.Metadata,
     callback: (error: ServiceError, responseMessage: worker_pb.WorkerModel|null) => void
   ): void;
   postWorker(
-    requestMessage: worker_pb.WorkerModel,
+    requestMessage: worker_pb.PostWorkerRequest,
     callback: (error: ServiceError, responseMessage: worker_pb.WorkerModel|null) => void
   ): void;
 }

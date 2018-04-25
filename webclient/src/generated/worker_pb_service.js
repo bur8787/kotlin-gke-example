@@ -33,7 +33,7 @@ Worker.PostWorker = {
   service: Worker,
   requestStream: false,
   responseStream: false,
-  requestType: worker_pb.WorkerModel,
+  requestType: worker_pb.PostWorkerRequest,
   responseType: worker_pb.WorkerModel
 };
 
