@@ -14,8 +14,13 @@ export class HomePage {
     private results: Array<string>
     private id: number
     private name: string
+    private targetHostKey = "targetHost"
 
     constructor(public navCtrl: NavController) {
+    }
+
+    ionViewDidLoad(){
+        this.host = localStorage.getItem(this.targetHostKey)
     }
 
     getWorkers() {
@@ -69,6 +74,11 @@ export class HomePage {
         let date = new Date()
         let result = date.toLocaleString() + ": " + JSON.stringify(obj)
         this.results.push(result)
+        this.saveTargetHost()
+    }
+
+    saveTargetHost(){
+        localStorage.setItem(this.targetHostKey, this.host)
     }
 
     clear() {
