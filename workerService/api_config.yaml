@@ -7,16 +7,6 @@ title: worker gRPC API
 apis:
 - name: Worker
 
-http:
-  rules:
-  - selector: Worker.GetWorkers
-    get: /v1/workers
-  - selector: Worker.GetWorker
-    get: /v1/workers/{id}
-  - selector: Worker.PostWorker
-    post: /v1/workers
-    body: worker
-
 usage:
   rules:
   - selector: "*"

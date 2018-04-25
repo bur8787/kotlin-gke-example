@@ -46,27 +46,23 @@ spec:
             - name: cloudsql-instance-credentials
               mountPath: /secrets/cloudsql
               readOnly: true
-        - name: grpc-webproxy
-          image: jfyne/docker-grpcwebproxy
-          ports:
-            - containerPort: 8080
-          command: ["/grpcwebproxy",
-                    "--backend_addr=127.0.0.1:6565",
-                    "--run_tls_server=false"]
         - name: esp
           image: gcr.io/endpoints-release/endpoints-runtime:1
           args: [
-            "--http_port=8081",
             "--http2_port=9000",
             "--backend=grpc://127.0.0.1:6565",
             "--service=worker.endpoints.GOOGLE_PROJECT_ID.cloud.goog",
             "--rollout_strategy=managed",
           ]
           ports:
-            - name: http
-              containerPort: 8081
-            - name: http2
-              containerPort: 9000
+            - containerPort: 9000
+        - name: grpc-webproxy
+          image: jfyne/docker-grpcwebproxy
+          command: ["/grpcwebproxy",
+                    "--backend_addr=127.0.0.1:9000",
+                    "--run_tls_server=false"]
+          ports:
+            - containerPort: 8080
       volumes:
         - name: cloudsql-instance-credentials
           secret:
@@ -85,12 +81,4 @@ spec:
       protocol: TCP
       port: 80
       targetPort: 8080
-    - name: cloud-endpoints-for-http
-      protocol: TCP
-      port: 8081
-      targetPort: 8081
-    - name: cloud-endpoints-for-http2
-      protocol: TCP
-      port: 9000
-      targetPort: 9000
   loadBalancerIP: WORKER_SERVICE_IP
