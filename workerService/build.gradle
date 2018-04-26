@@ -60,9 +60,11 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-devtools'
     compile 'org.lognet:grpc-spring-boot-starter:2.3.1'
     compile 'org.jooq:jooq'
+    compile 'org.apache.commons:commons-lang3:3.7'
 
     compile 'mysql:mysql-connector-java'
     runtime 'com.h2database:h2'
+    compile 'com.google.cloud:google-cloud-spanner:0.45.0-beta'
 
     jooqRuntime 'com.h2database:h2'
     jooqRuntime 'mysql:mysql-connector-java'

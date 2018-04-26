@@ -7,11 +7,9 @@ import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.select
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.statements.UpdateBuilder
-import org.springframework.context.annotation.Primary
 import org.springframework.stereotype.Repository
 import org.springframework.transaction.annotation.Transactional
 
-@Primary
 @Repository
 @Transactional
 open class ExposedWorkerDao : WorkerRepository {
