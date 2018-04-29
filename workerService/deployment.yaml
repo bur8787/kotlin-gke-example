@@ -64,7 +64,7 @@ spec:
                     "--backend_addr=127.0.0.1:9000",
                     "--run_tls_server=false"]
         - name: esp
-          image: gcr.io/endpoints-release/endpoints-runtime:1
+          image: gcr.io/endpoints-release/endpoints-runtime:1.17.0
           imagePullPolicy: Always
           args: [
             "--http_port=8081",
