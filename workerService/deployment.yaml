@@ -53,7 +53,7 @@ spec:
           command: ["/grpcwebproxy",
                     "--backend_addr=127.0.0.1:6565",
                     "--run_tls_server=false"]
-        - name: grpc-webproxy
+        - name: grpc-webproxy-for-cloudendpoints
           image: jfyne/docker-grpcwebproxy
           ports:
             - containerPort: 8082
