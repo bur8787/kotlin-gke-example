@@ -47,7 +47,7 @@ spec:
               mountPath: /secrets/cloudsql
               readOnly: true
         - name: grpc-webproxy
-          image: jfyne/docker-grpcwebproxy
+          image: gcr.io/GOOGLE_PROJECT_ID/webproxy:v1
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -55,7 +55,7 @@ spec:
                     "--backend_addr=127.0.0.1:6565",
                     "--run_tls_server=false"]
         - name: grpc-webproxy-for-cloudendpoints
-          image: jfyne/docker-grpcwebproxy
+          image: gcr.io/GOOGLE_PROJECT_ID/webproxy:v1
           imagePullPolicy: Always
           ports:
             - containerPort: 8082
