@@ -53,6 +53,14 @@ spec:
           command: ["/grpcwebproxy",
                     "--backend_addr=127.0.0.1:6565",
                     "--run_tls_server=false"]
+        - name: grpc-webproxy
+          image: jfyne/docker-grpcwebproxy
+          ports:
+            - containerPort: 8082
+          command: ["/grpcwebproxy",
+                    "--server_http_debug_port=8082",
+                    "--backend_addr=127.0.0.1:9000",
+                    "--run_tls_server=false"]
         - name: esp
           image: gcr.io/endpoints-release/endpoints-runtime:1
           args: [
@@ -85,6 +93,10 @@ spec:
       protocol: TCP
       port: 80
       targetPort: 8080
+    - name: grpc-web-proxy-for-cloudendpoints
+      protocol: TCP
+      port: 8082
+      targetPort: 8082
     - name: cloud-endpoints-for-http
       protocol: TCP
       port: 8081
