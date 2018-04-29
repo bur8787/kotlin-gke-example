@@ -48,6 +48,7 @@ spec:
               readOnly: true
         - name: grpc-webproxy
           image: jfyne/docker-grpcwebproxy
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
           command: ["/grpcwebproxy",
@@ -55,6 +56,7 @@ spec:
                     "--run_tls_server=false"]
         - name: grpc-webproxy-for-cloudendpoints
           image: jfyne/docker-grpcwebproxy
+          imagePullPolicy: Always
           ports:
             - containerPort: 8082
           command: ["/grpcwebproxy",
@@ -63,6 +65,7 @@ spec:
                     "--run_tls_server=false"]
         - name: esp
           image: gcr.io/endpoints-release/endpoints-runtime:1
+          imagePullPolicy: Always
           args: [
             "--http_port=8081",
             "--http2_port=9000",
