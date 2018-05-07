@@ -4,9 +4,11 @@ import com.example.domain.Worker
 import com.example.generated.jooq.Tables.WORKERS
 import com.example.generated.jooq.tables.records.WorkersRecord
 import org.jooq.DSLContext
+import org.springframework.context.annotation.Primary
 import org.springframework.stereotype.Repository
 import org.springframework.transaction.annotation.Transactional
 
+@Primary
 @Repository
 @Transactional
 open class JooqWorkerDao(private val context: DSLContext) : WorkerRepository {

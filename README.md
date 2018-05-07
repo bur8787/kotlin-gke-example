@@ -25,7 +25,7 @@ Comming soon.
 
 ```
 $ cd worker-service
-$ ./gradlew bootRun -Dspring.profiles.active=local
+$ ./gradlew bootRun -Dspring.profiles.active=h2
 ```
 
 #### Start gRPC Web Proxy
@@ -38,14 +38,29 @@ $ docker run -p 8080:8080 --rm -it jfyne/docker-grpcwebproxy /grpcwebproxy --bac
 
 ```
 $ cd web-client
-$ ionic serve --env=local
+$ ionic serve
 ```
 
 Now, you can access http://localhost:8100 .
 
 ## Build on Google Cloud Platform with CircleCI
 
-Comming soon.
+### Google Kubernetes Engine
+
+```
+$ gcloud container clusters create demo-cluster --num-nodes=1 --machine-type=n1-standard-2 --service-account=gke-sample-app@possible-enoch.iam.gserviceaccount.com 
+$ gcloud container clusters get-credentials demo-cluster
+```
+
+### Cloud SQL
+
+```
+$ gcloud sql users create proxyuser cloudsqlproxy~% --instance=[INSTANCE_NAME] --password=[PASSWORD]
+$ kubectl create secret generic cloudsql-instance-credentials \
+    --from-file=$[CREDENTIAL_FILE]
+$ kubectl create secret generic cloudsql-db-credentials \
+     --from-literal=username=proxyuser --from-literal=password=[PASSWORD]
+```
 
 # Appendix
 
